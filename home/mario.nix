@@ -140,25 +140,11 @@
          activate-window-menu = [];
        };
 
-       # Remove the old Ulauncher custom shortcut.
+       # Keep GNOME custom shortcuts empty; shortcuts above are configured directly.
        "org/gnome/settings-daemon/plugins/media-keys" = {
          custom-keybindings = [];
        };
      };
-
-     # Make Spotify visible to GNOME's app search with an absolute Nix store Exec path.
-     xdg.dataFile."applications/spotify.desktop".text = ''
-       [Desktop Entry]
-       Type=Application
-       Name=Spotify
-       GenericName=Music Player
-       Icon=spotify-client
-       Exec=${pkgs.spotify}/bin/spotify %U
-       Terminal=false
-       MimeType=x-scheme-handler/spotify;
-       Categories=Audio;Music;Player;AudioVideo;
-       StartupWMClass=spotify
-     '';
 
      programs.git = {
        enable = true;

@@ -115,8 +115,6 @@
     description = "mario";
     shell = pkgs.zsh;
     extraGroups = [ "networkmanager" "wheel" "sudo"];
-    packages = with pkgs; [
-    ];
   };
   
   # Nix Settings
@@ -126,10 +124,6 @@
   # Allow unfree install
   nixpkgs.config.allowUnfree = true;
   
-  # Install system packages
-  environment.systemPackages = [
-  ];
-
   # Enable Zsh as an available login shell
   programs.zsh.enable = true;
 
