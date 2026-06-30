@@ -11,7 +11,11 @@
     ];
 
   # Bootloader.
-  boot.loader.systemd-boot.enable = true;
+  boot.loader.systemd-boot = {
+    enable = true;
+    # Keep only the newest NixOS boot entries so Windows is easier to reach.
+    configurationLimit = 5;
+  };
   boot.loader.efi.canTouchEfiVariables = true;
 
   networking.hostName = "nixos"; # Define your hostname.
