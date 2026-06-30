@@ -109,6 +109,7 @@
   users.users."mario" = {
     isNormalUser = true;
     description = "mario";
+    shell = pkgs.zsh;
     extraGroups = [ "networkmanager" "wheel" "sudo"];
     packages = with pkgs; [
     ];
@@ -125,6 +126,12 @@
   environment.systemPackages = [
     pkgs.btop
   ];
+
+  # Enable Zsh as an available login shell
+  programs.zsh.enable = true;
+
+  # Logitech gaming mouse configuration daemon for Piper/libratbag.
+  services.ratbagd.enable = true;
 
   # Enable GameMode for games
   programs.gamemode.enable = true;
