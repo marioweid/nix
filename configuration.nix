@@ -19,6 +19,10 @@
   # Enable networking
   networking.networkmanager.enable = true;
 
+  # Open Ports
+  networking.firewall.allowedTCPPorts = [ 57621 ];
+  networking.firewall.allowedUDPPorts = [ 5353];
+
   # Set your time zone.
   time.timeZone = "Europe/Berlin";
 
@@ -124,14 +128,16 @@
   
   # Install system packages
   environment.systemPackages = [
-    pkgs.btop
   ];
 
   # Enable Zsh as an available login shell
   programs.zsh.enable = true;
 
-  # Logitech gaming mouse configuration daemon for Piper/libratbag.
-  services.ratbagd.enable = true;
+  # Logitech device manager from Svenum/Solaar-Flake.
+  services.solaar = {
+    enable = true;
+    window = "hide";
+  };
 
   # Enable GameMode for games
   programs.gamemode.enable = true;

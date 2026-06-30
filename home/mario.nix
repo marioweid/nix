@@ -122,31 +122,42 @@
          gtk-theme = "Adwaita-dark";
        };
 
-       # Free Super+Space from GNOME's input-source switcher.
+       # Mouse speed equivalent to Windows pointer speed 6/11 (default), with acceleration disabled.
+       "org/gnome/desktop/peripherals/mouse" = {
+         speed = 0.0;
+         accel-profile = "flat";
+       };
+
+       # Make Super+Space and Alt+Space open GNOME Overview/search, like pressing Super.
+       "org/gnome/shell/keybindings" = {
+         toggle-overview = [ "<Super>space" "<Alt>space" ];
+       };
+
+       # Free Super+Space from GNOME's input-source switcher and Alt+Space from the window menu.
        "org/gnome/desktop/wm/keybindings" = {
          switch-input-source = [];
          switch-input-source-backward = [];
+         activate-window-menu = [];
        };
 
-       # macOS Spotlight-like launcher on Super+Space.
+       # Remove the old Ulauncher custom shortcut.
        "org/gnome/settings-daemon/plugins/media-keys" = {
-         custom-keybindings = [
-           "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/ulauncher/"
-         ];
-       };
-       "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/ulauncher" = {
-         name = "Ulauncher";
-         command = "${pkgs.ulauncher}/bin/ulauncher-toggle";
-         binding = "<Super>space";
+         custom-keybindings = [];
        };
      };
 
-     xdg.configFile."autostart/ulauncher.desktop".text = ''
+     # Make Spotify visible to GNOME's app search with an absolute Nix store Exec path.
+     xdg.dataFile."applications/spotify.desktop".text = ''
        [Desktop Entry]
        Type=Application
-       Name=Ulauncher
-       Exec=${pkgs.ulauncher}/bin/ulauncher --hide-window
-       X-GNOME-Autostart-enabled=true
+       Name=Spotify
+       GenericName=Music Player
+       Icon=spotify-client
+       Exec=${pkgs.spotify}/bin/spotify %U
+       Terminal=false
+       MimeType=x-scheme-handler/spotify;
+       Categories=Audio;Music;Player;AudioVideo;
+       StartupWMClass=spotify
      '';
 
      programs.git = {
@@ -197,6 +208,7 @@
 
        # Modern terminal tools
        bat
+       btop
        dua
        duf
        dust
@@ -204,11 +216,10 @@
        fastfetch
        fd
        gping
-       piper
+       spotify
        procs
        ripgrep
        tree
-       ulauncher
        yazi
 
        nerd-fonts.jetbrains-mono
