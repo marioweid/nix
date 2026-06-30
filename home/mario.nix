@@ -109,6 +109,19 @@
 
      programs.firefox.enable = true;
 
+     # Make the non-Steam Guild Wars shortcut show up in GNOME search.
+     xdg.dataFile."applications/guild-wars.desktop".text = ''
+       [Desktop Entry]
+       Type=Application
+       Name=Guild Wars
+       Comment=Launch Guild Wars through Steam/Proton
+       Exec=steam steam://rungameid/2338494418
+       Icon=/home/mario/.local/share/Steam/steamapps/compatdata/2338494418/pfx/drive_c/proton_shortcuts/icons/256x256/apps/2130_Gw.0.png
+       Categories=Game;
+       StartupNotify=true
+       StartupWMClass=gw.exe
+     '';
+
      # Default to dark mode for GNOME/GTK apps.
      gtk = {
        enable = true;
@@ -116,11 +129,13 @@
        gtk4.extraConfig.gtk-application-prefer-dark-theme = 1;
      };
 
+
      dconf.settings = {
        "org/gnome/desktop/interface" = {
          color-scheme = "prefer-dark";
          gtk-theme = "Adwaita-dark";
        };
+
 
        # Mouse speed equivalent to Windows pointer speed 6/11 (default), with acceleration disabled.
        "org/gnome/desktop/peripherals/mouse" = {
