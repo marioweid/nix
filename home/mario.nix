@@ -202,12 +202,12 @@
        fastfetch
        fd
        gping
+       discord
        spotify
        procs
        ripgrep
        tree
        yazi
-
        nerd-fonts.jetbrains-mono
      ];                                                                                                                                                                                                             
    } 
