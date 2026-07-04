@@ -137,9 +137,9 @@
        };
 
 
-       # Mouse speed equivalent to Windows pointer speed 6/11 (default), with acceleration disabled.
+       # Manually tuned GNOME mouse cursor speed, with acceleration disabled.
        "org/gnome/desktop/peripherals/mouse" = {
-         speed = 0.0;
+         speed = -0.3504273504273504;
          accel-profile = "flat";
        };
 
@@ -222,6 +222,7 @@
        procs
        ripgrep
        tree
+       uv
        yazi
        nerd-fonts.jetbrains-mono
      ];                                                                                                                                                                                                             
