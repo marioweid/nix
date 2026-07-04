@@ -139,7 +139,7 @@
 
        # Manually tuned GNOME mouse cursor speed, with acceleration disabled.
        "org/gnome/desktop/peripherals/mouse" = {
-         speed = -0.3504273504273504;
+         speed = -0.56;
          accel-profile = "flat";
        };
 
