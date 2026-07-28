@@ -132,6 +132,9 @@
   # Enable Zsh as an available login shell
   programs.zsh.enable = true;
 
+  # GNOME extension: show top panel (with clock) on secondary monitors.
+  environment.systemPackages = [ pkgs.gnomeExtensions.multi-monitor-bar ];
+
   # Logitech device manager from Svenum/Solaar-Flake.
   services.solaar = {
     enable = true;

@@ -225,5 +225,6 @@
        uv
        yazi
        nerd-fonts.jetbrains-mono
+       teamspeak6-client
      ];                                                                                                                                                                                                             
    } 
