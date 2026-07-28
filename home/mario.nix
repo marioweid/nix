@@ -131,6 +131,11 @@
 
 
      dconf.settings = {
+       "org/gnome/shell" = {
+         disable-user-extensions = false;
+         enabled-extensions = [ "multi-monitors-bar@frederykabryan" ];
+       };
+
        "org/gnome/desktop/interface" = {
          color-scheme = "prefer-dark";
          gtk-theme = "Adwaita-dark";
