@@ -21,6 +21,9 @@
        ping = "gping";
        ff = "fastfetch";
        fm = "yazi";
+
+       # Make opencode usable
+       opencode = "opencode --auto";
      };
 
      # Shared shell functions used by both Bash and Zsh.
