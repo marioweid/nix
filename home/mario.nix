@@ -22,6 +22,22 @@
        ff = "fastfetch";
        fm = "yazi";
      };
+
+     # Shared shell functions used by both Bash and Zsh.
+     commonFunctions = ''
+       # Wrap ssh so that inside kitty we use kitty's ssh kitten, which copies
+       # the xterm-kitty terminfo to the remote host on connect. Without this,
+       # SSH sessions from kitty into machines lacking kitty-terminfo get a
+       # broken TERM and keys like Backspace stop working.
+       # Outside kitty (or if kitty is missing) we fall back to a plain ssh.
+       ssh() {
+         if [[ "$TERM" == xterm-kitty ]] && command -v kitty >/dev/null 2>&1; then
+           kitty +kitten ssh "$@"
+         else
+           command ssh "$@"
+         fi
+       }
+     '';
    in
 
    {                                                                                                                                                                                                                
@@ -42,7 +58,7 @@
      programs.bash = {
        enable = true;
        shellAliases = commonShellAliases;
-       initExtra = ''
+       initExtra = commonFunctions + ''
          if [[ $- == *i* ]] && [[ -z "$ZSH_VERSION" ]] && command -v zsh >/dev/null 2>&1; then
            exec zsh
          fi
@@ -70,6 +86,9 @@
            source "${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/config/p10k-lean.zsh"
            source "${pkgs.zsh-autosuggestions}/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
            source "${pkgs.zsh-syntax-highlighting}/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+
+           # Shared shell functions (e.g. kitty-aware ssh wrapper).
+           ${commonFunctions}
 
            # Atuin's Zsh integration is enabled below via programs.atuin.
          ''
@@ -108,6 +127,21 @@
      };
 
      programs.firefox.enable = true;
+
+     # VSCodium is a community-driven, fully open-source build of VS Code
+     # without Microsoft's telemetry/branding and with the open-vsx extension
+     # marketplace (see https://nixos.wiki/wiki/VSCodium).
+     # Use `programs.vscodium` (not `programs.vscode`) so Home Manager writes
+     # settings/extensions to VSCodium's own paths (~/.vscodium, VSCodium/User)
+     # instead of the Microsoft VS Code paths.
+     # The -fhs variant runs the binary in a fake FHS filesystem so extension
+     # dependencies resolve correctly.
+     programs.vscodium = {
+       enable = true;
+       package = pkgs.vscodium-fhs;
+       # Add your desired extensions from open-vsx, e.g.:
+       # extensions = with pkgs.vscode-extensions; [ bbenoist.nix ms-python.python ];
+     };
 
      # Make the non-Steam Guild Wars shortcut show up in GNOME search.
      xdg.dataFile."applications/guild-wars.desktop".text = ''
@@ -231,5 +265,6 @@
        yazi
        nerd-fonts.jetbrains-mono
        teamspeak6-client
+       opencode
      ];                                                                                                                                                                                                             
    } 
