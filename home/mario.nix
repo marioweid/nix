@@ -23,7 +23,7 @@
        fm = "yazi";
 
        # Make opencode usable
-       opencode = "opencode --auto";
+       # opencode = "opencode --auto";
      };
 
      # Shared shell functions used by both Bash and Zsh.
@@ -178,6 +178,18 @@
          gtk-theme = "Adwaita-dark";
        };
 
+
+       # Increase GNOME idle/screen-blank and suspend timeouts so the
+       # monitor does not go to sleep so quickly. Times are in seconds.
+       "org/gnome/desktop/session" = {
+         idle-delay = 900; # blank the screen after 15 minutes of inactivity
+       };
+       "org/gnome/settings-daemon/plugins/power" = {
+         sleep-inactive-ac-timeout = 3600;      # 60 minutes on AC power
+         sleep-inactive-ac-type = "suspend";
+         sleep-inactive-battery-timeout = 1200; # 20 minutes on battery
+         sleep-inactive-battery-type = "suspend";
+       };
 
        # Manually tuned GNOME mouse cursor speed, with acceleration disabled.
        "org/gnome/desktop/peripherals/mouse" = {
