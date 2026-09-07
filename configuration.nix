@@ -136,9 +136,13 @@
   environment.systemPackages = [ pkgs.gnomeExtensions.multi-monitor-bar ];
 
   # Logitech device manager from Svenum/Solaar-Flake.
-  services.solaar = {
+  programs.solaar = {
     enable = true;
-    window = "hide";
+
+    userService = {
+        enable = true;
+        window = "hide";
+    };
   };
 
   # Enable GameMode for games
