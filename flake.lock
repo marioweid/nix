@@ -1,5 +1,22 @@
 {
   "nodes": {
+    "agentSkills": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1787378666,
+        "narHash": "sha256-1EGs/MGTcm2S2OBc4csglwJuZNko5sJkJtCZOQ5EEZA=",
+        "owner": "marioweid",
+        "repo": "agent_skills",
+        "rev": "a387131d6ac32a0b7e74db5d9141fc7060691ec4",
+        "type": "github"
+      },
+      "original": {
+        "owner": "marioweid",
+        "ref": "main",
+        "repo": "agent_skills",
+        "type": "github"
+      }
+    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -38,6 +55,7 @@
     },
     "root": {
       "inputs": {
+        "agentSkills": "agentSkills",
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs"
       }

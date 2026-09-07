@@ -1,10 +1,10 @@
-   { pkgs, lib, ... }:
+   { pkgs, lib, inputs, ... }:
 
    let
      commonShellAliases = {
        rebuild = "sudo nixos-rebuild switch --flake ~/nixos-config#nixos";
        rebuild-test = "sudo nixos-rebuild test --flake ~/nixos-config#nixos";
-       flake-update = "nix flake update ~/nixos-config";
+       flake-update = "nix flake update --flake ~/nixos-config";
        nix-gc = "sudo nix-collect-garbage -d";
        cfg = "cd ~/nixos-config";
 
@@ -257,6 +257,11 @@
          window_padding_width = 6;
        };
      };
+
+     # Nix pins the GitHub revision; flake-update advances it and rebuild links it.
+     # Use Pi's discovery paths instead of making its mutable settings.json read-only.
+     home.file.".pi/agent/skills/agent-skills".source = "${inputs.agentSkills}/skills";
+     home.file.".pi/agent/AGENTS.md".source = "${inputs.agentSkills}/standards/AGENTS.md";
 
      home.packages = with pkgs; [
        pi-coding-agent

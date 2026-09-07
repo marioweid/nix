@@ -4,6 +4,11 @@
 
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+
+    agentSkills = {
+      url = "github:marioweid/agent_skills/main";
+      flake = false;
+    };
   };
 
   outputs = { self, nixpkgs, home-manager, ... }@inputs: {
@@ -19,6 +24,7 @@
 	{
 	  home-manager.useGlobalPkgs = true;
 	  home-manager.useUserPackages = true;
+	  home-manager.extraSpecialArgs = { inherit inputs; };
 	  home-manager.backupFileExtension = "hm-backup";
 	  
 	  # Users
