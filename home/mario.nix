@@ -121,6 +121,8 @@
      programs.fzf = {
        enable = true;
        enableZshIntegration = true;
+       # Let Atuin own Ctrl-R for shell history search.
+       historyWidget.command = "";
      };
 
      programs.zoxide = {
