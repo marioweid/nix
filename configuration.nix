@@ -23,6 +23,9 @@
   # Enable networking
   networking.networkmanager.enable = true;
 
+  # Enable Docker for local containers.
+  virtualisation.docker.enable = true;
+
   # Open Ports
   networking.firewall.allowedTCPPorts = [ 57621 ];
   networking.firewall.allowedUDPPorts = [ 5353];
@@ -119,7 +122,7 @@
     isNormalUser = true;
     description = "mario";
     shell = pkgs.zsh;
-    extraGroups = [ "networkmanager" "wheel" "sudo"];
+    extraGroups = [ "networkmanager" "wheel" "sudo" "docker" ];
   };
   
   # Nix Settings
