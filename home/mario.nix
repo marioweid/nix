@@ -268,6 +268,14 @@
      home.packages = with pkgs; [
        pi-coding-agent
 
+       # Development toolchains
+       gcc
+       go_1_27
+       golangci-lint
+       nodejs_22
+       pnpm
+       prek
+
        # Modern terminal tools
        bat
        btop
