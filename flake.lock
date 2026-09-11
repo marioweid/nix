@@ -3,11 +3,11 @@
     "agentSkills": {
       "flake": false,
       "locked": {
-        "lastModified": 1789049424,
-        "narHash": "sha256-zPvsPcSCq4UNYWPguUY34pgI3Y1lpOK4Gmwn3iDJoB8=",
+        "lastModified": 1789098101,
+        "narHash": "sha256-Uz9LnAPesQsDdRqXQ3dYf4uAMlOyf9q+uAnjkix4IoQ=",
         "owner": "marioweid",
         "repo": "agent_skills",
-        "rev": "2efc654a113c2a76f72ce99913481db184181dda",
+        "rev": "3feeb9870a8b008aff84171c9d8d7162ed491c20",
         "type": "github"
       },
       "original": {
