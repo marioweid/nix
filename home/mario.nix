@@ -264,6 +264,8 @@
      # Use Pi's discovery paths instead of making its mutable settings.json read-only.
      home.file.".pi/agent/skills/agent-skills".source = "${inputs.agentSkills}/skills";
      home.file.".pi/agent/AGENTS.md".source = "${inputs.agentSkills}/standards/AGENTS.md";
+     home.file.".pi/agent/agents".source = "${inputs.agentSkills}/pi/agents";
+     home.file.".pi/agent/prompts".source = "${inputs.agentSkills}/pi/prompts";
 
      home.packages = with pkgs; [
        pi-coding-agent
