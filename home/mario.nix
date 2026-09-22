@@ -181,13 +181,12 @@
        };
 
 
-       # Increase GNOME idle/screen-blank and suspend timeouts so the
-       # monitor does not go to sleep so quickly. Times are in seconds.
+       # Desktop idle policy. Times are in seconds.
        "org/gnome/desktop/session" = {
-         idle-delay = 900; # blank the screen after 15 minutes of inactivity
+         idle-delay = 14400; # blank the screen after 4 hours of inactivity
        };
        "org/gnome/settings-daemon/plugins/power" = {
-         sleep-inactive-ac-timeout = 3600;      # 60 minutes on AC power
+         sleep-inactive-ac-timeout = 28800;     # suspend after 8 hours on AC power
          sleep-inactive-ac-type = "suspend";
          sleep-inactive-battery-timeout = 1200; # 20 minutes on battery
          sleep-inactive-battery-type = "suspend";
